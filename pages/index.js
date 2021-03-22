@@ -4,10 +4,12 @@ import {Layout} from "../components/layout"
 import api from '../auth/axios'
 import {PropertyVip} from '../components/propertyVip'
 import {MDBContainer} from 'mdbreact'
+import {Carousel} from '../components/carousel'
 
 export default function Home({propertiesVip}) {
   return (
     <Layout>
+	<Carousel />
 	<MDBContainer>
 		<PropertyVip properties={propertiesVip}/>
 	</MDBContainer>

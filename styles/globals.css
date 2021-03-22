@@ -12,4 +12,12 @@
 		width: 100%;
 		height: 250px;
 	}
+
+	.carouselMain {
+		height: 500px;
+	}
+
+	.carouselItem {
+		transform: translate(0%, -30%);
+	}
 }
