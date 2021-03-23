@@ -22,6 +22,16 @@ export const Header = () => {
 					</Link>
 					</MDBNavItem>
 				</MDBNavbarNav>
+				<MDBNavbarNav right>
+					<MDBNavItem>
+						<Link href="/contact" passHref>
+							<a className="nav-link">
+								<MDBIcon icon="address-book" className="mr-1" />
+								Contact
+							</a>
+						</Link>
+					</MDBNavItem>
+				</MDBNavbarNav>
 			</MDBCollapse>
 		</MDBNavbar>
 	)
