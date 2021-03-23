@@ -1,6 +1,7 @@
 import React from "react";
 import {  MDBRow, MDBCol, MDBCard, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn } from "mdbreact";
 import { priceFormated } from "./helpers";
+import Link from 'next/link'
 
 export const Card = ({properties}) => {
   return (
@@ -12,16 +13,16 @@ export const Card = ({properties}) => {
       				<MDBCardBody>
 						<MDBRow>
 							<MDBCol lg="5">
+							<Link href="/property/[slug]" as={`/property/${property.slug}`} passHref>
 								<MDBView className="rounded z-depth-2 mb-lg-0 mb-4" hover waves>
-								<img
-									className="globalImg"
-									src={property.pictures[0]}
-									alt={property.title}
-								/>
-								<a href="#!">
-									<MDBMask overlay="white-slight" />
-								</a>
+									<img
+										className="globalImg"
+										src={property.pictures[0]}
+										alt={property.title}
+									/>
 								</MDBView>
+							</Link>
+								
 							</MDBCol>
 
 							<MDBCol lg="7">
