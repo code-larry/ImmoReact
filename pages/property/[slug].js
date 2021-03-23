@@ -12,8 +12,9 @@ import {
 import {CardCarousel} from '../../components/cardCarousel'
 import {Slug} from '../../components/slug'
 import {CardVip} from '../../components/cardVip'
+import {CardRelated} from '../../components/cardRelated'
 
-const Property = ({property, propertiesVip}) => {
+const Property = ({property, propertiesVip, propertyRelated}) => {
 	const styles = {
 		fontSize: 15
 	}
@@ -54,6 +55,17 @@ const Property = ({property, propertiesVip}) => {
 										<CardVip properties={propertiesVip} />
 									</MDBCol>
 								</MDBRow>
+								<hr className="my-4"/>
+								<MDBRow>
+									{
+										propertyRelated && propertyRelated.length !== 0 && (
+											<MDBCol>
+												<h2 className="mb-5">Biens Similaires</h2>
+												<CardRelated properties={propertyRelated} />
+											</MDBCol>
+										)
+									}
+								</MDBRow>
 							</MDBCardBody>
 						</MDBCard>
 					</MDBContainer>
@@ -82,15 +94,19 @@ export const getStaticProps = async({params}) => {
 	// Destructuring pour récupérer le slug
 	const {slug} = params;
 	// On stocke le résultat à la clé property de notre objet data
+	// On utilise les backticks pour utiliser les templates literals avecs les params dynamiques
 	const {data: property} = await api.get(`/api/property/${slug}`)
 
 	// Requête pour récupérer les biens VIP
 	const {data: propertiesVip} = await api.get("/api/properties/vip")
 
+	const {data: propertyRelated} = await api.get(`/api/properties/related/${property._id}`)
+
 	return {
 		props: {
 			property,
-			propertiesVip
+			propertiesVip,
+			propertyRelated
 		}
 	}
 }
