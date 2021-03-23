@@ -12,6 +12,9 @@ export function AdminRoutes(Component) {
 			if(isAuthenticated && !loading && user.role !== "admin"){
 				router.push("/")
 			}
+			if(!isAuthenticated){
+				router.push("/")
+			}
 		}, [isAuthenticated, loading, user])
 
 		return <Component {...arguments}/>

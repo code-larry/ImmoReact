@@ -14,13 +14,15 @@ export const Card = ({properties}) => {
 						<MDBRow>
 							<MDBCol lg="5">
 							<Link href="/property/[slug]" as={`/property/${property.slug}`} passHref>
-								<MDBView className="rounded z-depth-2 mb-lg-0 mb-4" hover waves>
-									<img
-										className="globalImg"
-										src={property.pictures[0]}
-										alt={property.title}
-									/>
-								</MDBView>
+								<a>
+									<MDBView className="rounded z-depth-2 mb-lg-0 mb-4" hover waves>
+											<img
+												className="globalImg"
+												src={property.pictures[0]}
+												alt={property.title}
+											/>
+									</MDBView>
+								</a>
 							</Link>
 								
 							</MDBCol>

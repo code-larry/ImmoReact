@@ -10,7 +10,7 @@ import {Features} from '../components/features'
 
 export default function Home({propertiesVip, properties}) {
   return (
-    <Layout>
+    <Layout footer>
 	<Carousel />
 	<MDBContainer>
 		<PropertyVip properties={propertiesVip}/>

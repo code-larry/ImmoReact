@@ -21,7 +21,7 @@ const Search = () => {
 			setProperties(data)
 		}
 		getProperty()
-	}, [router.query.title, router.query.category, properties])
+	}, [router.query.title, router.query.category])
 	return(
 		<Layout>
 			<div className="container">

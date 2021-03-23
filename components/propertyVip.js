@@ -9,6 +9,7 @@ import {
 	MDBView
 } from 'mdbreact'
 import {priceFormated} from './helpers'
+import Link from 'next/link'
 
 export const PropertyVip = ({properties}) => (
 	<>
@@ -17,9 +18,13 @@ export const PropertyVip = ({properties}) => (
 		{
 			properties && properties.map(property => (
 				<MDBCol md="4" lg="4" key={property._id}>
-				<MDBView zoom>
-					<img src={property.pictures[0]} alt={property.title} className="globalImg"/>	
-				</MDBView>
+				<Link href="/property/[slug]" as={`/property/${property.slug}`} passHref>
+					<a>
+						<MDBView zoom>
+							<img src={property.pictures[0]} alt={property.title} className="globalImg"/>	
+						</MDBView>
+					</a>
+				</Link>
 				<MDBCardBody>
 					<MDBCardTitle>{property.title}</MDBCardTitle>
 					<MDBCardText>

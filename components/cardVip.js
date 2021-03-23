@@ -6,7 +6,7 @@ export const CardVip = ({properties}) => (
 	<>
 	{
 		properties && properties.map(property => (
-			<MDBCard>
+			<MDBCard key={property._id}>
 				<MDBCardImage 
 					src={property.pictures[0]} 
 					zoom 
