@@ -5,6 +5,7 @@ import {Card} from '../components/card'
 import {MDBContainer} from 'mdbreact'
 import {useRouter} from 'next/router'
 import ReactPaginate from 'react-paginate'
+import {SearchFilter} from '../components/searchFilter'
 
 const Properties = ({properties, currentPage, pageCount}) => {
 
@@ -32,6 +33,7 @@ const Properties = ({properties, currentPage, pageCount}) => {
 	return (
 		<Layout>
 			<MDBContainer>
+			<SearchFilter />
 				<Card properties={properties} />
 				<div className="paginateCenter">
 					<ReactPaginate 
