@@ -6,12 +6,18 @@ import {
 	MDBCardBody,
 	MDBContainer,
 	MDBCol,
-	MDBRow
+	MDBRow,
+	MDBIcon
 } from 'mdbreact'
 import {CardCarousel} from '../../components/cardCarousel'
 import {Slug} from '../../components/slug'
+import {CardVip} from '../../components/cardVip'
 
-const Property = ({property}) => {
+const Property = ({property, propertiesVip}) => {
+	const styles = {
+		fontSize: 15
+	}
+
 	return (
 		<>
 		{
@@ -24,6 +30,28 @@ const Property = ({property}) => {
 									<MDBCol md="9" lg="9">
 										<CardCarousel property={property}/>
 										<Slug property={property} />
+									</MDBCol>
+									<MDBCol md="3" lg="3">
+										<h4 className="mt-5">Contactez-nous</h4>
+										<div style={styles}>
+											<MDBIcon icon="calculator" className="mr-1" />
+											10, rue de la Paix
+										</div>
+										<div style={styles}>
+											<MDBIcon icon="phone-alt" className="mr-1" />
+											+33 387769875
+										</div>
+										<div style={styles}>
+											<MDBIcon icon="mobile-alt" className="mr-1" />
+											+33 387769875
+										</div>
+										<div style={styles}>
+											<MDBIcon icon="envelope" className="mr-1" />
+											contact@gmail.com
+										</div>
+
+										<h3 className="mt-4 mb-3">Biens Sponsorisés</h3>
+										<CardVip properties={propertiesVip} />
 									</MDBCol>
 								</MDBRow>
 							</MDBCardBody>
@@ -56,9 +84,13 @@ export const getStaticProps = async({params}) => {
 	// On stocke le résultat à la clé property de notre objet data
 	const {data: property} = await api.get(`/api/property/${slug}`)
 
+	// Requête pour récupérer les biens VIP
+	const {data: propertiesVip} = await api.get("/api/properties/vip")
+
 	return {
 		props: {
-			property
+			property,
+			propertiesVip
 		}
 	}
 }
